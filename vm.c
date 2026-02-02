@@ -53,10 +53,17 @@ int main(int argc, char *argv[])
 
     printf("\n");
 
+    FILE *file = NULL;
+
     if (argc > 1)
     {
-        int x = atoi(argv[1]);   // convert string to int (simple)
-        printf("Converted argv[1] to int: %d\n", x);
+        // Opening file for input
+        file = fopen(argv[1], "r");
+        if(file == NULL)
+        {
+            printf("input file could not be opened");
+            return 1;
+        }
     }
     else
     {
@@ -64,6 +71,22 @@ int main(int argc, char *argv[])
         printf("Try: ./00_args 123\n");
         return 1;
     }
+
+    // putting all instructions from file into PAS
+    int index = 0;
+    int op = 0;
+    int l = 0;
+    int m = 0;
+
+    while(fscanf(file, "%d %d %d", &op, &l, &m) == 3)
+    {
+        pas[index] = op;
+        pas[index + 1] = l;
+        pas[index + 2] = m;
+        index += 3;
+    }
+
+
 
     //Fetch Cycle
         //Copy current instruction from pas to IR
