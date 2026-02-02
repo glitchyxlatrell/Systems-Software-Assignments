@@ -86,6 +86,9 @@ int main(int argc, char *argv[])
         index += 3;
     }
 
+    // printing initial values (nothing in stack)
+    printf("intitial values : \n");
+    printf("PC=%d BP=%d SP=%d Stack: ", PC, BP, SP);
 
 
     //Fetch Cycle
