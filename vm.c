@@ -90,33 +90,57 @@ int main(int argc, char *argv[])
     printf("intitial values : \n");
     printf("PC=%d BP=%d SP=%d Stack: ", PC, BP, SP);
 
+    int stopCycle = 0;
 
-    //Fetch Cycle
-        //Copy current instruction from pas to IR
-    IR[0] = pas[PC]; //OP
-    IR[1] = pas[PC + 1]; //L
-    IR[2] = pas[PC + 2]; //M
-    PC += 3; //Increment PC
+    while(!stopCycle){
+        //Fetch Cycle
+            //Copy current instruction from pas to IR
+        IR[0] = pas[PC]; //OP
+        IR[1] = pas[PC + 1]; //L
+        IR[2] = pas[PC + 2]; //M
+        PC += 3; //Increment PC
 
-    //Execute Cycle
-    if(IR[0] == 2) //OPR
-    {
-        switch (IR[2]) //M
+        //Execute Cycle
+        if(IR[0] == 2) //OPR
         {
-            case 0: //RTN
-                SP = BP + 1;
-                BP = pas[SP - 2];
-                PC = pas[SP - 3];
-                break;
-            
-            case 1: //NEG
+            switch (IR[2]) //M
+            {
+                case 0: //RTN
+                {
+                    SP = BP + 1;
+                    BP = pas[SP - 2];
+                    PC = pas[SP - 3];
+                    break;
+                }
+                case 1: //NEG
 
+                case 2; //ADD
+
+                case 3; //SUB
+
+                case 4; //MULT
+
+                case 5; //DIV
+
+                case 6; //EQUAL
+
+                case 7; //INEQUAL
+
+                case 8; //LESS-THAN
+
+                case 9; //LESS-THAN/EQUAL
+
+                case 10; //GREATER-THAN
+
+                case 11; //GREATER-THAN/EQUAL
+
+            }
         }
-    }
-    else //everything other than OPR
-    {
-        switch (IR[0]) //OP
+        else //everything other than OPR
         {
+            switch (IR[0]) //OP
+            {
+            }
         }
     }
 
